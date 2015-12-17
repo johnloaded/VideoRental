@@ -10,7 +10,7 @@ namespace Solid {
     private static void Main( string[] args )
     {
 
-      var terminator = new Movie("Terminator", 1);
+      var terminator = new Movie("Terminator", MovieType.Regular);
       var john = new Customer("John");
       var rentOfTerminator = new Rental(terminator, 5);
 

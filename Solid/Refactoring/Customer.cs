@@ -24,17 +24,17 @@ namespace Solid.Refactoring {
       foreach ( var rental in _rentals ) {
         double rentalAmount = 0;
         //determine amounts for each line 
-        switch ( rental.Movie.PriceCode ) {
-          case Movie.Regular:
+        switch ( rental.Movie.MovieType ) {
+          case MovieType.Regular:
             rentalAmount += 2;
             if ( rental.GetDaysRented() > 2 ) {
               rentalAmount += ( rental.GetDaysRented() - 2 ) * 1.5;
             }
             break;
-          case Movie.NewRelease:
+          case MovieType.NewRelease:
             rentalAmount += rental.GetDaysRented() * 3;
             break;
-          case Movie.Childrens:
+          case MovieType.Childrens:
             rentalAmount += 1.5;
             if ( rental.GetDaysRented() > 3 ) {
               rentalAmount += ( rental.GetDaysRented() - 3 ) * 1.5;
@@ -46,7 +46,7 @@ namespace Solid.Refactoring {
         frequentRenterPoints++;
         
         // add bonus for a two day new release rental
-        if ( ( rental.Movie.PriceCode == Movie.NewRelease ) && rental.GetDaysRented() > 1 ) {
+        if ( ( rental.Movie.MovieType == MovieType.NewRelease ) && rental.GetDaysRented() > 1 ) {
           frequentRenterPoints++;
         }
 
