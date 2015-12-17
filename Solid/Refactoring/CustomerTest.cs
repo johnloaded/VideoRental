@@ -96,7 +96,7 @@ namespace Solid.Refactoring
             john.AddRental(rentOfTerminator);
 
             var statement = john.Statement();
-            Assert.IsTrue(statement.Contains("You earned 1 frequent renter point"));
+            Assert.AreEqual(1, john.GetfrequentRenterPoints());
         }
 
 
@@ -113,7 +113,7 @@ namespace Solid.Refactoring
             john.AddRental(rentOfXmen);
 
             var statement = john.Statement();
-            Assert.IsTrue(statement.Contains("You earned 3 frequent renter point"));
+            Assert.AreEqual(3, john.GetfrequentRenterPoints(), "Frequent point should be 3");
         }
     }
 }

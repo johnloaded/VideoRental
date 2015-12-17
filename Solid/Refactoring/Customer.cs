@@ -19,10 +19,10 @@ namespace Solid.Refactoring {
 
     public string Statement() {
       double totalAmount = 0;
-      int frequentRenterPoints = 0;
       string result = "Rental Record for " + GetName() + "\n";
       foreach ( var rental in _rentals ) {
         double rentalAmount = 0;
+
         //determine amounts for each line 
         switch ( rental.Movie.MovieType ) {
           case MovieType.Regular:
@@ -41,23 +41,31 @@ namespace Solid.Refactoring {
             }
             break;
         }
-
-        // add frequent renter points
-        frequentRenterPoints++;
-        
-        // add bonus for a two day new release rental
-        if ( ( rental.Movie.MovieType == MovieType.NewRelease ) && rental.GetDaysRented() > 1 ) {
-          frequentRenterPoints++;
-        }
-
         //show figures for this rental
         result += "\t" + rental.Movie.Title + "\t" + rentalAmount + "\n";
         totalAmount += rentalAmount;
       }
       //add footer lines
       result += "Amount owed is " + totalAmount + "\n";
-      result += "You earned " + frequentRenterPoints + " frequent renter points";
+      result += "You earned " + GetfrequentRenterPoints() + " frequent renter points";
       return result;
     }
+
+      public int GetfrequentRenterPoints()
+      {
+          int frequentRenterPoints = 0;
+          foreach (var rental in _rentals)
+          {
+
+              // add frequent renter points
+              frequentRenterPoints++;
+              // add bonus for a two day new release rental
+              if ((rental.Movie.MovieType == MovieType.NewRelease) && rental.GetDaysRented() > 1)
+              {
+                  frequentRenterPoints++;
+              }
+          }
+          return frequentRenterPoints;
+      }
   }
 }
