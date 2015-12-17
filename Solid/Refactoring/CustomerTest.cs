@@ -39,6 +39,18 @@ namespace Solid.Refactoring
         }
 
         [TestMethod]
+        public void WhenRentMovies_ShouldCalculateRentalAmount()
+        {
+            var terminator = new Movie("Terminator", MovieType.Regular);
+            var xmen = new Movie("Xmen", MovieType.NewRelease);
+            var rentOfTerminator = new Rental(terminator, 5);
+            var rentOfXmen = new Rental(xmen, 3);
+
+            Assert.AreEqual(9, rentOfXmen.CalculateRent());
+            Assert.AreEqual(6.5, rentOfTerminator.CalculateRent());
+        }
+
+        [TestMethod]
         public void WhenGetStatement_ShouldPrintCustomerName()
         {
             var terminator = new Movie("Terminator", MovieType.Regular);
