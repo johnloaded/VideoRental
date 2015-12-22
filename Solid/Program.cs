@@ -17,7 +17,7 @@ namespace Solid {
         var rentOfXmen = new Rental(xmen, 3);
 
         john.AddRental(rentOfTerminator);
-       // john.AddRental(rentOfXmen);
+        john.AddRental(rentOfXmen);
 
       Console.WriteLine(john.Statement());
 

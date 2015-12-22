@@ -107,8 +107,8 @@ namespace Solid.Refactoring
 
             john.AddRental(rentOfTerminator);
 
-            var statement = john.Statement();
-            Assert.AreEqual(1, john.GetfrequentRenterPoints());
+            var statement = john.Statement(); 
+            Assert.IsTrue(statement.Contains("You earned 1"), "Should be one points");
         }
 
 
@@ -125,7 +125,25 @@ namespace Solid.Refactoring
             john.AddRental(rentOfXmen);
 
             var statement = john.Statement();
-            Assert.AreEqual(3, john.GetfrequentRenterPoints(), "Frequent point should be 3");
+            Assert.IsTrue(statement.Contains("You earned 3 "), "Frequent point should be 3");
+        }
+
+        [TestMethod]
+        public void WhenRentNewMovieMoreThanOneDay_ShouldGetTwoPoints()
+        {
+            var terminator = new Movie("Terminator", MovieType.NewRelease);
+            var rentOfTerminator = new Rental(terminator, 5);
+
+            Assert.AreEqual(2, rentOfTerminator.CalculateFrequentRenterPoints(), "Frequent point should be 2");
+        }
+ 
+        [TestMethod]
+        public void WhenRentMovie_ShouldGetOnePoint()
+        {
+            var terminator = new Movie("Terminator", MovieType.Regular);
+            var rentOfTerminator = new Rental(terminator, 5);
+            
+            Assert.AreEqual(1, rentOfTerminator.CalculateFrequentRenterPoints(), "Frequent point should be 1");
         }
     }
 }

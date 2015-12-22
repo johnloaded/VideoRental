@@ -40,19 +40,12 @@ namespace Solid.Refactoring
             return result;
         }
 
-        public int GetfrequentRenterPoints()
+        private int GetfrequentRenterPoints()
         {
             int frequentRenterPoints = 0;
             foreach (var rental in _rentals)
             {
-
-                // add frequent renter points
-                frequentRenterPoints++;
-                // add bonus for a two day new release rental
-                if ((rental.Movie.MovieType == MovieType.NewRelease) && rental.GetDaysRented() > 1)
-                {
-                    frequentRenterPoints++;
-                }
+                frequentRenterPoints += rental.CalculateFrequentRenterPoints();
             }
             return frequentRenterPoints;
         }
