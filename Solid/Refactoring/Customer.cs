@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Solid.Refactoring
 {
@@ -24,20 +25,42 @@ namespace Solid.Refactoring
 
         public string Statement()
         {
-            double totalAmount = 0;
-            string result = "Rental Record for " + GetName() + "\n";
+            return CreateStatementHeader() + CreateStatementBody() + CreateStatementFooter();
+        }
+
+        private string CreateStatementHeader()
+        {
+            return "Rental Record for " + GetName() + "\n";
+        }
+
+        private string CreateStatementBody()
+        {
+            string result = String.Empty;
             foreach (var rental in _rentals)
+
             {
                 var rentalAmount = rental.CalculateRent();
-                totalAmount += rentalAmount;
                 //show figures for this rental
                 result += "\t" + rental.Movie.Title + "\t" + rentalAmount + "\n";
-
             }
-            //add footer lines
-            result += "Amount owed is " + totalAmount + "\n";
+            return result;
+        }
+
+        private string CreateStatementFooter()
+        {
+            var result = "Amount owed is " + GetTotalRentalAmount() + "\n";
             result += "You earned " + GetfrequentRenterPoints() + " frequent renter points";
             return result;
+        }
+
+        private double GetTotalRentalAmount()
+        {
+            double totalAmount = 0;
+            foreach (var rental in _rentals)
+            {
+                totalAmount += rental.CalculateRent();
+            }
+            return totalAmount;
         }
 
         private int GetfrequentRenterPoints()
