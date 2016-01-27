@@ -4,6 +4,6 @@ namespace Solid.Refactoring
     {
         string Title { get; }
         double CalculatePrice(int daysRented);
-        MovieType MovieType { get; set; }
+        MovieType MovieType { get; }
     }
 }

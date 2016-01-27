@@ -7,7 +7,14 @@
             Title = title;
         }
 
-        public MovieType MovieType { get; set; }
+        public MovieType MovieType
+        {
+            get
+            {
+                return MovieType.NewRelease;
+            }
+            
+        }
 
         public string Title { get; private set; }
 

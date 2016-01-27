@@ -114,9 +114,7 @@ namespace Solid.Refactoring
         public void WhenGetStatement_ShouldPrintFrequentPoints()
         {
             var terminator = new Regular("Terminator");
-            terminator.MovieType = MovieType.Regular;
             var xmen = new NewRelease("Xmen");
-            xmen.MovieType = MovieType.NewRelease;
             var john = new Customer("John");
             var rentOfTerminator = new Rental(terminator, 5);
             var rentOfXmen = new Rental(xmen, 3);
@@ -132,7 +130,6 @@ namespace Solid.Refactoring
         public void WhenRentNewMovieMoreThanOneDay_ShouldGetTwoPoints()
         {
             var terminator = new NewRelease("Terminator");
-            terminator.MovieType = MovieType.NewRelease;
             var rentOfTerminator = new Rental(terminator, 5);
 
             Assert.AreEqual(2, rentOfTerminator.CalculateFrequentRenterPoints(), "Frequent point should be 2");

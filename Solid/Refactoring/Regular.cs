@@ -1,6 +1,7 @@
 namespace Solid.Refactoring
 {
-    public class Regular: IMovie
+
+    public class Regular : IMovie
     {
         public Regular(string title)
         {
@@ -21,6 +22,12 @@ namespace Solid.Refactoring
             return rentalAmount;
         }
 
-        public MovieType MovieType { get; set; }
+        public MovieType MovieType
+        {
+            get
+            {
+                return MovieType.Regular;
+            }
+        }
     }
 }
