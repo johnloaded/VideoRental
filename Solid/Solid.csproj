@@ -44,12 +44,16 @@
   <ItemGroup>
     <Compile Include="Car.cs" />
     <Compile Include="IConsume.cs" />
+    <Compile Include="Refactoring\Childrens.cs" />
     <Compile Include="Refactoring\Customer.cs" />
     <Compile Include="Refactoring\CustomerTest.cs" />
+    <Compile Include="Refactoring\IMovie.cs" />
     <Compile Include="Refactoring\Movie.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Refactoring\MovieType.cs" />
+    <Compile Include="Refactoring\NewRelease.cs" />
+    <Compile Include="Refactoring\Regular.cs" />
     <Compile Include="Refactoring\Rental.cs" />
     <Compile Include="Van.cs" />
   </ItemGroup>

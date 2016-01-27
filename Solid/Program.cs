@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using Solid.Refactoring;
@@ -10,8 +11,8 @@ namespace Solid {
     private static void Main( string[] args )
     {
 
-        var terminator = new Movie("Terminator", MovieType.Regular);
-        var xmen = new Movie("Xmen", MovieType.NewRelease);
+        var terminator = new Regular("Terminator");
+        var xmen = new NewRelease("Xmen");
         var john = new Customer("John");
         var rentOfTerminator = new Rental(terminator, 5);
         var rentOfXmen = new Rental(xmen, 3);

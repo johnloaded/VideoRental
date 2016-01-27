@@ -10,7 +10,7 @@ namespace Solid.Refactoring
         [TestMethod]
         public void WhenRentRegularMovie_ShouldGiveRightStatement()
         {
-            var terminator = new Movie("Terminator", MovieType.Regular);
+            var terminator = new Regular("Terminator");
             var john = new Customer("John");
             var rentOfTerminator = new Rental(terminator, 5);
 
@@ -24,8 +24,8 @@ namespace Solid.Refactoring
         [TestMethod]
         public void WhenRentMovies_ShouldGiveRightStatement()
         {
-            var terminator = new Movie("Terminator", MovieType.Regular);
-            var xmen = new Movie("Xmen", MovieType.NewRelease);
+            var terminator = new Regular("Terminator");
+            var xmen = new NewRelease("Xmen");
             var john = new Customer("John");
             var rentOfTerminator = new Rental(terminator, 5);
             var rentOfXmen = new Rental(xmen, 3);
@@ -41,19 +41,17 @@ namespace Solid.Refactoring
         [TestMethod]
         public void WhenRentMovies_ShouldCalculateRentalAmount()
         {
-            var terminator = new Movie("Terminator", MovieType.Regular);
-            var xmen = new Movie("Xmen", MovieType.NewRelease);
-            var rentOfTerminator = new Rental(terminator, 5);
-            var rentOfXmen = new Rental(xmen, 3);
+            var terminator = new Regular("Terminator");
+            var xmen = new NewRelease("Xmen");
 
-            Assert.AreEqual(9, rentOfXmen.CalculateRent());
-            Assert.AreEqual(6.5, rentOfTerminator.CalculateRent());
+            Assert.AreEqual(9, xmen.CalculatePrice(3));
+            Assert.AreEqual(6.5, terminator.CalculatePrice(5));
         }
 
         [TestMethod]
         public void WhenGetStatement_ShouldPrintCustomerName()
         {
-            var terminator = new Movie("Terminator", MovieType.Regular);
+            var terminator = new Regular("Terminator");
             var john = new Customer("John");
             var rentOfTerminator = new Rental(terminator, 5);
 
@@ -68,7 +66,7 @@ namespace Solid.Refactoring
         [TestMethod]
         public void WhenGetStatement_ShouldPrintMovieTitle()
         {
-            var terminator = new Movie("Terminator", MovieType.Regular);
+            var terminator = new Regular("Terminator");
             var john = new Customer("John");
             var rentOfTerminator = new Rental(terminator, 5);
 
@@ -83,8 +81,8 @@ namespace Solid.Refactoring
         [TestMethod]
         public void WhenGetStatement_ShouldPrintMoviesTitles()
         {
-            var terminator = new Movie("Terminator", MovieType.Regular);
-            var xmen = new Movie("Xmen", MovieType.NewRelease);
+            var terminator = new Regular("Terminator");
+            var xmen = new NewRelease("Xmen");
             var john = new Customer("John");
             var rentOfTerminator = new Rental(terminator, 5);
             var rentOfXmen = new Rental(xmen, 3);
@@ -101,7 +99,7 @@ namespace Solid.Refactoring
         [TestMethod]
         public void WhenGetStatement_ShouldPrintFrequentPoint()
         {
-            var terminator = new Movie("Terminator", MovieType.Regular);
+            var terminator = new Regular("Terminator");
             var john = new Customer("John");
             var rentOfTerminator = new Rental(terminator, 5);
 
@@ -115,8 +113,10 @@ namespace Solid.Refactoring
         [TestMethod]
         public void WhenGetStatement_ShouldPrintFrequentPoints()
         {
-            var terminator = new Movie("Terminator", MovieType.Regular);
-            var xmen = new Movie("Xmen", MovieType.NewRelease);
+            var terminator = new Regular("Terminator");
+            terminator.MovieType = MovieType.Regular;
+            var xmen = new NewRelease("Xmen");
+            xmen.MovieType = MovieType.NewRelease;
             var john = new Customer("John");
             var rentOfTerminator = new Rental(terminator, 5);
             var rentOfXmen = new Rental(xmen, 3);
@@ -131,7 +131,8 @@ namespace Solid.Refactoring
         [TestMethod]
         public void WhenRentNewMovieMoreThanOneDay_ShouldGetTwoPoints()
         {
-            var terminator = new Movie("Terminator", MovieType.NewRelease);
+            var terminator = new NewRelease("Terminator");
+            terminator.MovieType = MovieType.NewRelease;
             var rentOfTerminator = new Rental(terminator, 5);
 
             Assert.AreEqual(2, rentOfTerminator.CalculateFrequentRenterPoints(), "Frequent point should be 2");
@@ -140,7 +141,7 @@ namespace Solid.Refactoring
         [TestMethod]
         public void WhenRentMovie_ShouldGetOnePoint()
         {
-            var terminator = new Movie("Terminator", MovieType.Regular);
+            var terminator = new Regular("Terminator");
             var rentOfTerminator = new Rental(terminator, 5);
             
             Assert.AreEqual(1, rentOfTerminator.CalculateFrequentRenterPoints(), "Frequent point should be 1");

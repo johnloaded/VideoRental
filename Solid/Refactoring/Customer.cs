@@ -39,7 +39,7 @@ namespace Solid.Refactoring
             foreach (var rental in _rentals)
 
             {
-                var rentalAmount = rental.CalculateRent();
+                var rentalAmount = rental.Movie.CalculatePrice(rental.GetDaysRented());
                 //show figures for this rental
                 result += "\t" + rental.Movie.Title + "\t" + rentalAmount + "\n";
             }
@@ -58,7 +58,7 @@ namespace Solid.Refactoring
             double totalAmount = 0;
             foreach (var rental in _rentals)
             {
-                totalAmount += rental.CalculateRent();
+                totalAmount += rental.Movie.CalculatePrice(rental.GetDaysRented());
             }
             return totalAmount;
         }
