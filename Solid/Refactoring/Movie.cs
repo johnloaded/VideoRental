@@ -1,23 +1,16 @@
 ﻿namespace Solid.Refactoring
 {
-    //public class Movie
-    //{
-    //    //public string Title { get; private set; }
-    //    //public MovieType MovieType { get; private set; }
+    public abstract class Movie : IMovie
+    {
+        protected Movie(string title, MovieType movieType)
+        {
+            Title = title;
+            MovieType = movieType;
+        }
 
-    //    //public Movie(string title, MovieType movieType)
-    //    //{
-
-    //    //    MovieType = movieType;
-    //    //    Title = title;
-    //    //}
-
-    //    //public void SetPrice(MovieType movieType)
-    //    //{
-    //    //    MovieType = movieType;
-    //    //}
-    //}
-
-
+        public string Title { get; private set; }
+        public abstract double CalculatePrice(int daysRented);
+        public MovieType MovieType { get; private set; }
+    }
 
 }

@@ -1,24 +1,10 @@
 ﻿namespace Solid.Refactoring
 {
-    public class Childrens: IMovie
+    public class Childrens: Movie
     {
-        public Childrens(string title)
-        {
-            Title = title;
-        }
+       public Childrens(string title):base(title, MovieType.Childrens){}
 
-        public MovieType MovieType
-        {
-            get
-            {
-                return MovieType.Childrens;
-            }
-            
-        }
-
-        public string Title { get; private set; }
-
-        public double CalculatePrice (int daysRented)
+       public override double CalculatePrice (int daysRented)
         {
             var rentalAmount = 0.00;
 

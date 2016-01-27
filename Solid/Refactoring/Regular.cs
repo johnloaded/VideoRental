@@ -1,16 +1,12 @@
 namespace Solid.Refactoring
 {
+  
 
-    public class Regular : IMovie
+    public class Regular : Movie
     {
-        public Regular(string title)
-        {
-            Title = title;
-        }
+        public Regular(string title):base(title, MovieType.Regular){}
 
-        public string Title { get; private set; }
-
-        public double CalculatePrice(int daysRented)
+        public override double CalculatePrice(int daysRented)
         {
             var rentalAmount = 0.00;
 
@@ -20,14 +16,6 @@ namespace Solid.Refactoring
                 rentalAmount += (daysRented - 2) * 1.5;
             }
             return rentalAmount;
-        }
-
-        public MovieType MovieType
-        {
-            get
-            {
-                return MovieType.Regular;
-            }
         }
     }
 }
