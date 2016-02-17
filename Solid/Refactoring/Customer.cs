@@ -68,7 +68,7 @@ namespace Solid.Refactoring
             int frequentRenterPoints = 0;
             foreach (var rental in _rentals)
             {
-                frequentRenterPoints += rental.CalculateFrequentRenterPoints();
+                frequentRenterPoints += rental.Movie.CalculateFrequentRenterPoints(rental.GetDaysRented());
             }
             return frequentRenterPoints;
         }

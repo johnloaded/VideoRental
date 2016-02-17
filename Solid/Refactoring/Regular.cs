@@ -1,21 +1,30 @@
 namespace Solid.Refactoring
 {
-  
+
 
     public class Regular : Movie
     {
-        public Regular(string title):base(title, MovieType.Regular){}
+        private int StandardDays = 2;
+        private int StandardRate = 2;
+        private double LateRate = 1.5;
+        
+        public Regular(string title) : base(title, MovieType.Regular)
+        {
+        }
 
         public override double CalculatePrice(int daysRented)
         {
-            var rentalAmount = 0.00;
-
-            rentalAmount += 2;
-            if (daysRented > 2)
+            double rentalAmount = StandardRate;
+            if (daysRented > StandardDays)
             {
-                rentalAmount += (daysRented - 2) * 1.5;
+                rentalAmount += (daysRented - StandardDays)*LateRate;
             }
             return rentalAmount;
+        }
+
+        public new int CalculateFrequentRenterPoints(int daysRented)
+        {
+            return StandardPoint;
         }
     }
 }

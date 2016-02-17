@@ -132,7 +132,7 @@ namespace Solid.Refactoring
             var terminator = new NewRelease("Terminator");
             var rentOfTerminator = new Rental(terminator, 5);
 
-            Assert.AreEqual(2, rentOfTerminator.CalculateFrequentRenterPoints(), "Frequent point should be 2");
+            Assert.AreEqual(2, rentOfTerminator.Movie.CalculateFrequentRenterPoints(5), "Frequent point should be 2");
         }
  
         [TestMethod]
@@ -141,7 +141,7 @@ namespace Solid.Refactoring
             var terminator = new Regular("Terminator");
             var rentOfTerminator = new Rental(terminator, 5);
             
-            Assert.AreEqual(1, rentOfTerminator.CalculateFrequentRenterPoints(), "Frequent point should be 1");
+            Assert.AreEqual(1, rentOfTerminator.Movie.CalculateFrequentRenterPoints(5), "Frequent point should be 1");
         }
     }
 }

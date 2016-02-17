@@ -2,15 +2,29 @@
 {
     public class NewRelease: Movie
     {
+        private int StandardDays = 1;
+        private double StandardRate = 3;
+        private int ExtraPoint = 1;
+        
         public NewRelease(string title) : base(title, MovieType.NewRelease){}
         
         public override double CalculatePrice(int daysRented)
         {
-            var rentalAmount = 0.00;
+            return daysRented * StandardRate;
+           
+        }
 
-            rentalAmount = daysRented * 3;
+        public override int CalculateFrequentRenterPoints(int daysRented)
+        {
+            var points = StandardPoint;
+            // add frequent renter points
 
-            return rentalAmount;
+            // add bonus for a two day new release rental
+            if (daysRented > StandardDays)
+            {
+                points+=ExtraPoint;
+            }
+            return points;
         }
     }
 }

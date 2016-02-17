@@ -4,6 +4,7 @@ namespace Solid.Refactoring
     {
         string Title { get; }
         double CalculatePrice(int daysRented);
+        int CalculateFrequentRenterPoints(int daysRented);
         MovieType MovieType { get; }
     }
 }
